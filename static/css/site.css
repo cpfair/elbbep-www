@@ -177,6 +177,9 @@ h1.step {
         width: 186px;
         height: 186px;
     }
+    .download label {
+        white-space: nowrap;
+    }
     #mc_embed_signup input.email {
         width: 80%;
         margin-left: 0;
