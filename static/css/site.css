@@ -1,3 +1,4 @@
+@import 'https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700';
 body {
     margin: 0;
     padding: 0;
@@ -147,6 +148,7 @@ h1.step {
     cursor: pointer;
     margin: 10px;
     cursor: pointer;
+    -webkit-appearance: none;
 }
 
 .footer {
@@ -154,6 +156,10 @@ h1.step {
 }
 
 @media all and (max-width: 720px) {
+    .content {
+        overflow-x: hidden;
+        margin: 15px;
+    }
     .content-wrap {
         width: auto;
         left: auto;
@@ -165,9 +171,14 @@ h1.step {
         position: relative;
         width: 120%;
         left: -10%;
+        margin: 0;
     }
     .download {
         width: 186px;
         height: 186px;
+    }
+    #mc_embed_signup input.email {
+        width: 80%;
+        margin-left: 0;
     }
 }

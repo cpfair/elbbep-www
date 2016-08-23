@@ -2,8 +2,8 @@ from jinja2 import Template
 import json
 
 NICE_NAMES = {
-    "ev2_4": "Original V2R2",
-    "v1_5": "Origin V3R&hellip;",
+    "ev2_4": "Original V2&hellip;",
+    "v1_5": "Original V3&hellip;",
     "v2_0": "Steel",
     "snowy_dvt": "Time",
     "snowy_s3": "Time Steel",
