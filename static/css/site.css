@@ -1,0 +1,173 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/background.png');
+    background-position: center 38%;
+    text-align: center;
+    font-family: 'Quattrocento Sans', sans-serif;
+}
+
+p {
+    font-size: 16pt;
+}
+
+a {
+    color: #333;
+}
+
+.header {
+    font-size: 500%;
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+.header-sub {
+    font-size: 200%;
+    margin-top: 5px;
+}
+
+.content-wrap {
+    position: relative;
+    left: 50%;
+    width: 720px;
+    margin-left: -360px;
+    background-color: white;
+    text-align: left;
+    padding-top: 1px;
+    border: 1px solid #f3f3f3;
+}
+
+.content {
+    margin: 50px;
+    margin-top: 49px;
+}
+
+.mockup {
+    text-align: center;
+}
+
+h1.step {
+    text-align: center;
+}
+
+.downloads-block {
+    text-align: center;
+}
+
+.download {
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    box-sizing: border-box;
+    border:1px solid #f3f3f3;
+    background-color: #fafafa;
+    background-size: 70%;
+    background-position: 50% 65%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    padding: 10px;
+    margin: 5px;
+    font-size: 16pt;
+    height: 186px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.1s ease-in-out;
+}
+
+.download:hover {
+    opacity: 1;
+}
+
+.download .version {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    font-size: 70%;
+}
+
+.download.ev2_4, .download.v1_5 {
+    background-image: url('../img/download_original.png');
+}
+.download.v2_0 {
+    background-image: url('../img/download_steel.png');
+}
+.download.snowy_dvt, .download.snowy_s3 {
+    background-image: url('../img/download_time.png');
+}
+.download.spalding {
+    background-image: url('../img/download_timeround.png');
+}
+.download.langpack {
+    display: none;
+    background-image: url('../img/download_langpack.png');
+}
+
+.downloads-block .langpack-unselected {
+    color: #777;
+    font-style: italic;
+}
+
+.download label {
+    font-size: 120%;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+}
+
+#mc_embed_signup {
+    text-align: center;
+    vertical-align: top;
+    margin: 30px 0;
+}
+
+#mc_embed_signup input.email {
+    vertical-align: top;
+    font:inherit;
+    font-size: 150%;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    padding: 0 0.4em;
+    height: 30px;
+    margin: 10px;
+    margin-right: 0;
+}
+
+#mc_embed_signup input.button {
+    vertical-align: top;
+    font-size: 120%;
+    font: inherit;
+    background-color: #aaa;
+    color: white;
+    border: 0 none;
+    border-radius: 2px;
+    padding: 0 22px;
+    line-height: 32px;
+    cursor: pointer;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.footer {
+    margin: 30px 0;
+}
+
+@media all and (max-width: 720px) {
+    .content-wrap {
+        width: auto;
+        left: auto;
+        margin: 0;
+        border-left: none;
+        border-right: none;
+    }
+    .mockup img {
+        position: relative;
+        width: 120%;
+        left: -10%;
+    }
+    .download {
+        width: 186px;
+        height: 186px;
+    }
+}

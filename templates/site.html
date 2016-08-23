@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Arabic and Hebrew everywhere on your Pebble - elbbeP</title>
+    <link rel="stylesheet" type="text/css" href="static/css/site.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1 class="header">elbbeP</h1>
+    <h2 class="header-sub">Hebrew and Arabic for Pebble</h2>
+    <div class="content-wrap">
+        <div class="content">
+            <div class="mockup">
+                <img src="static/img/mockup.png"/>
+            </div>
+            <p>elbbeP lets you read Arabic and Hebrew everywhere on your Pebble smartwatch: text messages, calendar alerts, apps &amp; more. Any Pebble can be upgraded to display Hebrew and Arabic. Follow these steps, and you'll never see <span class="squares">□□□□</span> again.</p>
+            <h1 class="step">Step 1 - Install Firmware</h1>
+            <p>elbbeP is a firmware update for your Pebble, so you need to download the right version for your watch. If you've got an Original Pebble, check your Pebble’s settings screen under "System &rarr; Information" to find out what hardware revision you own. Don’t worry if you get it wrong; the Pebble app will catch the error.</p>
+
+            <p>Once you download the firmware, open it in the Pebble phone app, read the warning, and start the firmware update.</p>
+
+            <div class="downloads-block">
+                {% for key, block in sorted_manifest %}
+                    <a target="_blank" href="static/packages/{{ block.firmware|safe }}" class="download firmware {{ key }}" onclick="fw_select('{{ key }}');">
+                        <label>{{ block.name|safe }}</label>
+                        <span class="version">OS {{ block.version }}</span>
+                    </a>
+                {% endfor %}
+            </div>
+
+
+            <h1 class="step">Step 2 - Install Language Pack</h1>
+            <p>I couldn't fit all the right-to-left goodness in one file, so you'll also need to install a special "language pack" to complete the setup. Like the firmware, just open the downloaded file in the Pebble app and confirm the installation.</p>
+            <div class="downloads-block">
+                <p class="langpack-unselected">(select a watch above, first)</p>
+                {% for key, block in sorted_manifest %}
+                    <a target="_blank" href="static/packages/{{ block.langpack|safe }}" class="download langpack" id="langpack-{{ key }}" onclick="langpack_select('{{ key }}');">
+                        <label>Language Pack</label>
+                        <span class="version">OS {{ block.version }}</span>
+                    </a>
+                {% endfor %}
+            </div>
+            <h1 class="step">Step 3 - Get Updates</h1>
+            <p>There isn't really a step 3. But, when a new version of the official Pebble firmware is released, you'll want to repeat the above steps. Sign up for updates to receive an email when a new version of elbbeP is ready to install.</p>
+
+            <!-- Begin MailChimp Signup Form -->
+            <div id="mc_embed_signup">
+                <form action="https://cpfx.us14.list-manage.com/subscribe/post?u=0a0fe55310640c2cdf655c51d&amp;id=5c9b444d7e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                    <input type="email" value="" placeholder="email address" name="EMAIL" class="required email" id="mce-EMAIL">
+                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_0a0fe55310640c2cdf655c51d_5c9b444d7e" tabindex="-1" value=""></div>
+                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                </form>
+            </div>
+            <!--End mc_embed_signup-->
+
+            <h1 class="step">FAQ</h1>
+            <p>
+                <strong>Will this damage my watch?</strong><br/>
+                Almost certainly not. Each Pebble watch has a recovery mode built-in, so you can restore the watch to factory defaults even if the main firmware isn't working.
+            </p>
+
+            <p>
+                <strong>Will this stop official firmware updates?</strong><br/>
+                No - the Pebble app will still notify you of new firmware versions. If you install an official firmware update, you'll lose the ability to see Arabic and Hebrew on your watch until you install the corresponding version of elbbeP.
+            </p>
+
+            <p>
+                <strong>Can I uninstall elbbeP?</strong><br/>
+                Yes. First, put your Pebble into recovery mode by holding the back, select, and up buttons at once until it starts rebooting (your data will not be erased). Then, open the Pebble phone app and follow the prompts to reinstall the official firmware. You can then unselect the elbbeP language pack from the phone app's settings screen.
+            </p>
+
+            <p>
+                <strong>Arabic's neat, what about Farsi/Urdu/Pashto/&hellip;?</strong><br/>
+                On Time-series watches, no problem. Unfortunately, classic Pebbles (including the Steel) don't have quite enough room to fit the extra characters.
+            </p>
+
+            <p>
+                <strong>Does this translate my watch's user interface?</strong><br/>
+                Nope - it'll still be in English.
+            </p>
+
+            <p>
+                <strong>I still see <span class="squares">□□□□</span> sometimes!</strong><br/>
+                Some Pebble apps use custom fonts instead of the ones built into the watch. These custom fonts generally don't include the characters required to display Arabic or Hebrew - so you'll be back to squares, unfortunately. Alternatively, you may be using some more unusual characters not supported by the system.
+            </p>
+
+            <h1 class="step">Contact</h1>
+            <p>Send questions and comments to <a href="mailto:elbbep@cpfx.ca">elbbep@cpfx.ca</a>.</p>
+        </div>
+    </div>
+    <div class="footer">
+        elbbeP is an <a href="https://github.com/cpfair/elbbep">open-source project</a>. It is not affiliated with Pebble Technology Inc.
+    </div>
+    <script type="text/javascript">
+        // It's a one-page website, should I feel bad writing the JS straight into the HTML?
+        function fw_select(key) {
+            document.querySelector(".langpack-unselected").style.display = "none";
+            var langpack_blocks = document.querySelectorAll(".langpack");
+            for (var i = 0; i < langpack_blocks.length; i++) {
+                var block = langpack_blocks[i];
+                block.style.display = block.id == "langpack-" + key ? "inline-block" : "none";
+            }
+            ga('send', 'firmware', 'download', key);
+        }
+
+        function langpack_select(key) {
+            ga('send', 'langpack', 'download', key);
+        }
+
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-49035672-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+</html>
