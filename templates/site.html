@@ -42,7 +42,7 @@
                     </a>
                 {% endfor %}
             </div>
-            <h1 class="step">Step 3 - Get Updates</h1>
+            <h1 class="step" id="getupdates">Step 3 - Get Updates</h1>
             <p>There isn't really a step 3. But, when a new version of the official Pebble firmware is released, you'll want to repeat the above steps. Sign up for updates to receive an email when a new version of elbbeP is ready to install.</p>
 
             <!-- Begin MailChimp Signup Form -->
@@ -115,6 +115,7 @@
 
         function langpack_select(key) {
             ga('send', 'event', 'langpack', 'download', key);
+            window.location.hash = "getupdates";
         }
 
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
