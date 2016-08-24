@@ -5,7 +5,7 @@
     <title>Arabic and Hebrew everywhere on your Pebble - elbbeP</title>
     <link rel="stylesheet" type="text/css" href="static/css/site.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="elbbeP lets you read Arabic and Hebrew everywhere on your Pebble smartwatch: text messages, calendar alerts, apps & more.">
+    <meta name="description" content="Arabic and Hebrew notifications, alerts, apps and more for your Pebble smartwatch. Works on iOS and Android.">
 </head>
 <body>
     <h1 class="header">elbbeP</h1>
@@ -15,7 +15,7 @@
             <div class="mockup">
                 <img src="static/img/mockup.png"/>
             </div>
-            <p>elbbeP lets you read Arabic and Hebrew everywhere on your Pebble smartwatch: text messages, calendar alerts, apps &amp; more. Any Pebble can be upgraded to display Hebrew and Arabic, and there's no extra phone app required. Follow these steps, and you'll never see <span class="squares">□□□□</span> again.</p>
+            <p>elbbeP lets you read Arabic and Hebrew everywhere on your Pebble smartwatch: notifications, calendar alerts, apps &amp; more. Any Pebble can be upgraded to display Hebrew and Arabic. There's no extra phone app required, so it works on iOS and Android. Follow these steps, and you'll never see <span class="squares">□□□□</span> again.</p>
             <h1 class="step">Step 1 - Install Firmware</h1>
             <p>elbbeP is a firmware update for your Pebble, so you need to download the right version for your watch. If you've got an Original Pebble, check your Pebble’s settings screen under "System &rarr; Information" to find out what hardware revision you own. Don’t worry if you get it wrong; the Pebble app will catch the error.</p>
 
@@ -31,7 +31,7 @@
             </div>
 
 
-            <h1 class="step">Step 2 - Install Language Pack</h1>
+            <h1 class="step" id="langpack">Step 2 - Install Language Pack</h1>
             <p>I couldn't fit all the right-to-left goodness in one file, so you'll also need to install a special "language pack" to complete the setup. Like the firmware, just open the downloaded file in the Pebble app and confirm the installation.</p>
             <div class="downloads-block">
                 <p class="langpack-unselected">(select a watch above, first)</p>
@@ -110,6 +110,7 @@
                 block.style.display = block.id == "langpack-" + key ? "inline-block" : "none";
             }
             ga('send', 'event', 'firmware', 'download', key);
+            window.location.hash = "langpack";
         }
 
         function langpack_select(key) {
