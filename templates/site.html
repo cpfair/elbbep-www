@@ -19,7 +19,7 @@
             <h1 class="step">Step 1/3 - Install Firmware</h1>
             <p>elbbeP is a firmware update for your Pebble, so you need to download the right version for your watch. If you've got an Original Pebble, check your Pebble’s settings screen under "System &rarr; Information" to find out what hardware revision you own. Don’t worry if you get it wrong; the Pebble app will catch the error.</p>
 
-            <p>Once you download the firmware, open it in the Pebble phone app. You need to open the PBZ file directly in the Pebble app - don't unzip it first. For example, if you're on iPhone you'll see <a href="http://i.imgur.com/EikykCy.png" target="_blank">a screen like this</a> - tap "Open in Pebble" or "Open in..." and select the Pebble app. On Android, you may need to open it via your file manager. If you're on a desktop right now, open this site on your phone, or email the files to yourself. Once it's open in the app, read the warning and start the firmware update.</p>
+            <p>Once you download the firmware, open it in the Pebble phone app. You need to open the PBZ file directly in the Pebble app - don't unzip it first. For example, if you're on iPhone you'll see <a href="http://i.imgur.com/EikykCy.png" target="_blank">a screen like this</a> - tap "Open in Pebble" or "Open in..." and select the Pebble app. On Android, you may need to open it via your file manage. If you're on a desktop right now, open this site on your phone, or email the files to yourself. Once it's open in the app, read the warning and start the firmware update.</p>
 
             <div class="downloads-block">
                 {% for key, block in sorted_manifest %}
@@ -49,6 +49,7 @@
             <div id="mc_embed_signup">
                 <form action="https://cpfx.us14.list-manage.com/subscribe/post?u=0a0fe55310640c2cdf655c51d&amp;id=5c9b444d7e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                     <input type="email" value="" placeholder="email address" name="EMAIL" class="required email" id="mce-EMAIL">
+                    <input type="hidden" value="" name="HWREV" class="" id="mce-HWREV">
                     <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                     <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_0a0fe55310640c2cdf655c51d_5c9b444d7e" tabindex="-1" value=""></div>
                     <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
@@ -110,6 +111,7 @@
                 block.style.display = block.id == "langpack-" + key ? "inline-block" : "none";
             }
             ga('send', 'event', 'firmware', 'download', key);
+            document.getElementById("mce-HWREV").value = key;
             window.location.hash = "langpack";
         }
 
