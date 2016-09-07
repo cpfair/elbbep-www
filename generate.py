@@ -17,5 +17,5 @@ for k, item in MANIFEST.items():
 SORTED_MANIFEST = sorted(MANIFEST.items(), key=lambda x: HW_REVS.index(x[0]))
 
 template = Template(open("templates/site.html", "r").read())
-rendered = template.render(sorted_manifest=SORTED_MANIFEST)
+rendered = template.render(sorted_manifest=SORTED_MANIFEST, manifest_json=json.dumps(MANIFEST))
 open("index.html", "w").write(rendered)

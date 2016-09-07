@@ -32,15 +32,19 @@
 
 
             <h1 class="step" id="langpack">Step 2/3 - Install Language Pack</h1>
-            <p>I couldn't fit all the right-to-left goodness in one file, so you'll also need to install a special "language pack" to complete the setup. Like the firmware, just open the downloaded file in the Pebble app and confirm the installation.</p>
+            <p>I couldn't fit all the right-to-left goodness in one file, so you'll also need to install a special "language pack" to complete the setup. Like the firmware, just open the downloaded file in the Pebble app and confirm the installation. If your eyesight is better than mine, try the "compact" font size.</p>
             <div class="downloads-block">
+                <div>
+                    <select id="size-shift" onchange="langpack_size_shift_select();">
+                        <option value="small">Compact Font</option>
+                        <option value="medium" selected>Regular Font</option>
+                        <option value="large">Large Font</option>
+                    </select>
+                </div>
                 <p class="langpack-unselected">(select a watch above, first)</p>
-                {% for key, block in sorted_manifest %}
-                    <a target="_blank" href="static/packages/{{ block.langpack|safe }}" class="download langpack" id="langpack-{{ key }}" onclick="langpack_select('{{ key }}');">
-                        <label>Language Pack</label>
-                        <span class="version">OS {{ block.version }}</span>
-                    </a>
-                {% endfor %}
+                <a target="_blank" class="download langpack" onclick="langpack_select();">
+                    <label>Language Pack</label>
+                </a>
             </div>
             <h1 class="step" id="getupdates">Step 3/3 - Get Updates</h1>
             <p>There isn't really a step 3. But, when a new version of the official Pebble firmware is released, you'll want to repeat the above steps. Sign up for updates to receive an email when a new version of elbbeP is ready to install.</p>
@@ -103,20 +107,39 @@
     </div>
     <script type="text/javascript">
         // It's a one-page website, should I feel bad writing the JS straight into the HTML?
+
+        var MANIFEST = {{ manifest_json }};
+        var selected_hwrev;
+        var selected_size_shift;
+        var size_shifts = ["small", "medium", "large"];
         function fw_select(key) {
-            document.querySelector(".langpack-unselected").style.display = "none";
-            var langpack_blocks = document.querySelectorAll(".langpack");
-            for (var i = 0; i < langpack_blocks.length; i++) {
-                var block = langpack_blocks[i];
-                block.style.display = block.id == "langpack-" + key ? "inline-block" : "none";
-            }
+            selected_hwrev = key;
+            langpack_activate();
             ga('send', 'event', 'firmware', 'download', key);
             document.getElementById("mce-HWREV").value = key;
             window.location.hash = "langpack";
         }
 
-        function langpack_select(key) {
-            ga('send', 'event', 'langpack', 'download', key);
+        function langpack_size_shift_select() {
+            selected_size_shift = document.getElementById("size-shift").value;
+            langpack_activate();
+        }
+        langpack_size_shift_select();
+
+        function langpack_activate() {
+            if (selected_hwrev === undefined || selected_size_shift === undefined) {
+                return;
+            }
+            var manifest_entry = MANIFEST[selected_hwrev];
+
+            document.querySelector(".langpack-unselected").style.display = "none";
+            var langpack_link = document.querySelector(".langpack");
+            langpack_link.style.display = "inline-block";
+            langpack_link.href = "static/packages/" + manifest_entry["langpack"][selected_size_shift];
+        }
+
+        function langpack_select() {
+            ga('send', 'event', 'langpack', 'download', selected_hwrev, size_shifts.indexOf(selected_size_shift));
             window.location.hash = "getupdates";
         }
 

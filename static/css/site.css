@@ -16,6 +16,11 @@ a {
     color: #333;
 }
 
+select, option {
+    font-family: inherit;
+    font-size: inherit;
+}
+
 .header {
     font-size: 500%;
     margin-bottom: 0;
