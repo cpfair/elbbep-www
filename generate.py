@@ -10,7 +10,7 @@ NICE_NAMES = {
     "spalding": "Time Round",
     "silk": "Pebble 2"
 }
-HW_REVS = ["ev2_4", "v1_5", "v2_0", "snowy_dvt", "snowy_s3", "spalding"]
+HW_REVS = ["ev2_4", "v1_5", "v2_0", "snowy_dvt", "snowy_s3", "spalding", "silk"]
 
 MANIFEST = json.load(open("static/packages/manifest.json", "r"))
 MANIFEST = {k: v for k, v in MANIFEST.items() if k in HW_REVS}

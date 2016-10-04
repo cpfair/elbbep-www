@@ -93,7 +93,7 @@ h1.step {
     font-size: 70%;
 }
 
-.download.ev2_4, .download.v1_5 {
+.download.ev2_4, .download.v1_5, .download.silk {
     background-image: url('../img/download_original.png');
 }
 .download.v2_0 {
